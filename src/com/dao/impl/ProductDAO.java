@@ -27,7 +27,7 @@ public class ProductDAO extends BaseDAO implements IProductDAO {
         try {
             Session session = getSession();
             Transaction ts = session.beginTransaction();
-            Query query = session.createQuery("from Product p order by p.datetime desc ");
+            Query query = session.createQuery("from Product p where p.picture like '%banner%'");
             query.setMaxResults(2);
             List products = query.list();
             ts.commit();
