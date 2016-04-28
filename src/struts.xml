@@ -7,7 +7,7 @@
             <result name="success">/newProduct.jsp</result>
         </action>
         <action name="login" class="userAction" method="logincheck">
-            <result name="success">/loginsuccess.jsp</result>
+            <result name="success">/mymessage.jsp</result>
             <result name="error">/login.jsp</result>
         </action>
         <action name="showproduct" class="productAction" method="showProduct">
@@ -45,6 +45,9 @@
         <action name="checkout" class="shopAction" method="checkout">
             <result name="success">/checkout_success.jsp</result>
             <result name="error">/login.jsp</result>
+        </action>
+        <action name="getproductbydatetime" class="productAction" method="getproductbydatetime">
+            <result name="success">/getproductbydatetime.jsp</result>
         </action>
     </package>
 </struts>    

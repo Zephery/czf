@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Zephery
-  Date: 2016/4/23
-  Time: 16:30
+  Date: 2016/4/28
+  Time: 20:15
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="GBK" %>
@@ -10,7 +10,7 @@
 <%@ taglib uri='/struts-tags' prefix='s' %>
 <jsp:include page="head.jsp"/>
 <jsp:include page="searchbyname.jsp"/>
-<s:iterator value="#request['user']" id="user">
+<s:iterator value="#session['user']" id="user">
     <h1><s:property value="#user.userid"/></h1>
     <h1><s:property value="#user.ussername"/></h1>
     <h1><s:property value="#user.email"/></h1>

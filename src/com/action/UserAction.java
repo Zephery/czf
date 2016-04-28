@@ -21,6 +21,7 @@ public class UserAction extends ActionSupport {
     protected IUserService userService;
     private String fileName;
     private String name;
+    private IOrderService orderService;
 
     public Users getUser() {
         return this.user;
@@ -82,14 +83,22 @@ public class UserAction extends ActionSupport {
         this.fileName = fileName;
     }
 
+    public IOrderService getOrderService() {
+        return orderService;
+    }
+
+    public void setOrderService(IOrderService orderService) {
+        this.orderService = orderService;
+    }
+
     public String logincheck() throws Exception {
         Users u = userService.validateUser(user.getUsername(), user.getPassword());
         //System.out.println("hello world");
         if (u != null) {
             Map session = ActionContext.getContext().getSession();
+            List orders = orderService.getorderhistory(u.getUserid());
+            session.put("orders", orders);
             session.put("user", u);
-            Map request = (Map) ActionContext.getContext().get("request");
-            request.put("user", u);
             return SUCCESS;
         } else {
             return ERROR;

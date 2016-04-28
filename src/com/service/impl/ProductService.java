@@ -60,4 +60,8 @@ public class ProductService implements IProductService {
         return productDAO.findAllCatalogProduct(catalogid);
     }
 
+    public List getproductbydatetime() {
+        return productDAO.getproductbydatetime();
+    }
+
 }

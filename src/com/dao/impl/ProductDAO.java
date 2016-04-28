@@ -164,4 +164,22 @@ public class ProductDAO extends BaseDAO implements IProductDAO {
             return null;
         }
     }
+
+    public List getproductbydatetime() {
+        try {
+            Session session = getSession();
+            Transaction ts = session.beginTransaction();
+            Query query = session.createQuery("from Product p where p.datetime" +
+                    " not like '%banner%' order by p.datetime asc");
+            query.setMaxResults(18);
+            List products = query.list();
+            ts.commit();
+            session.close();
+            session = null;
+            return products;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

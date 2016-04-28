@@ -4,6 +4,8 @@ import com.dao.IOrderDAO;
 import com.models.Orders;
 import com.service.IOrderService;
 
+import java.util.List;
+
 /**
  * Created by Zephery on 2016/4/26.
  */
@@ -20,5 +22,8 @@ public class OrderService implements IOrderService {
 
     public Orders saveOrder(Orders order) {
         return orderDAO.saveOrder(order);
+    }
+    public List getorderhistory(int userid){
+        return orderDAO.getorderhistory(userid);
     }
 }

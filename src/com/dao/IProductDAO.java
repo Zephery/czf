@@ -18,4 +18,5 @@ public interface IProductDAO {
     public List searchbyname(String name);
     public List showcatalogProduct(int pageNow,int pageSize,Integer catalogid);
     public int findAllCatalogProduct(Integer catalogid);
+    public List getproductbydatetime();
 }

@@ -299,4 +299,10 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String getproductbydatetime() throws Exception {
+        List products = productService.getproductbydatetime();
+        Map request = (Map) ActionContext.getContext().get("request");
+        request.put("products", products);
+        return SUCCESS;
+    }
 }
