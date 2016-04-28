@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+        "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="getNewProduct" class="productAction" method="getNewProduct">
+            <result name="success">/newProduct.jsp</result>
+        </action>
+        <action name="login" class="userAction" method="logincheck">
+            <result name="success">/loginsuccess.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+        <action name="showproduct" class="productAction" method="showProduct">
+            <result name="success">/allproduct.jsp</result>
+        </action>
+        <action name="logout" class="userAction" method="logout">
+            <result name="success">/index.jsp</result>
+        </action>
+        <action name="register" class="userAction" method="register">
+            <result name="success">/registersuccess.jsp</result>
+            <result name="error">/account.jsp</result>
+        </action>
+        <action name="single" class="productAction" method="getdetailproduct">
+            <result name="success">/single.jsp</result>
+        </action>
+        <action name="catalogProductdetail" class="productAction" method="catalogProductdetail">
+            <result name="success">/allproduct.jsp</result>
+        </action>
+        <action name="tomenu" class="productAction" method="tomenu">
+            <result name="success">/menu.jsp</result>
+        </action>
+        <action name="tomenulist" class="productAction" method="tomenulist">
+            <result name="success">/menulist.jsp</result>
+        </action>
+        <action name="searchbyname" class="productAction" method="searchProduct">
+            <result name="success">/allproduct.jsp</result>
+            <result name="error">/404.jsp</result>
+        </action>
+        <action name="addToCart" class="shopAction" method="addToCart">
+            <result name="success">/addToCart_succcess.jsp</result>
+        </action>
+        <action name="updateCart" class="shopAction" method="updateCart">
+            <result name="success">/showCart.jsp</result>
+        </action>
+        <action name="checkout" class="shopAction" method="checkout">
+            <result name="success">/checkout_success.jsp</result>
+            <result name="error">/login.jsp</result>
+        </action>
+    </package>
+</struts>    
