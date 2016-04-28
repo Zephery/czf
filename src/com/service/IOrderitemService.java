@@ -1,10 +1,11 @@
-package com.dao;
-import com.models.*;
+package com.service;
+
 import java.util.List;
+import com.models.Orderitem;
 
 /**
  * Created by Zephery on 2016/4/28.
  */
-public interface IOrderitemDAO {
+public interface IOrderitemService {
     public Orderitem getorderitemhistory(int orderid);
 }

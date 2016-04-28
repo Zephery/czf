@@ -22,6 +22,8 @@ public class UserAction extends ActionSupport {
     private String fileName;
     private String name;
     private IOrderService orderService;
+    protected IOrderitemService orderitemService;
+    private IProductService productService;
 
     public Users getUser() {
         return this.user;
@@ -91,12 +93,39 @@ public class UserAction extends ActionSupport {
         this.orderService = orderService;
     }
 
+    public IOrderitemService getOrderitemService() {
+        return orderitemService;
+    }
+
+    public void setOrderitemService(IOrderitemService orderitemService) {
+        this.orderitemService = orderitemService;
+    }
+
+    public IProductService getProductService() {
+        return productService;
+    }
+
+    public void setProductService(IProductService productService) {
+        this.productService = productService;
+    }
+
     public String logincheck() throws Exception {
         Users u = userService.validateUser(user.getUsername(), user.getPassword());
         //System.out.println("hello world");
         if (u != null) {
             Map session = ActionContext.getContext().getSession();
-            List orders = orderService.getorderhistory(u.getUserid());
+            List<Orders> orders = orderService.getorderhistory(u.getUserid());
+            List<Orderitem> orderitems = new ArrayList<>();
+            for (Orders order : orders) {
+                orderitems.add(orderitemService.getorderitemhistory(order.getOrderid()));
+            }
+            List<Product> soldproduct = new ArrayList<>();
+
+            for (Orderitem orderitem : orderitems) {
+                soldproduct.add(productService.findProduct(orderitem.getProduct().getProductid()));
+            }
+            session.put("soldproduct", soldproduct);
+            session.put("orderitems", orderitems);
             session.put("orders", orders);
             session.put("user", u);
             return SUCCESS;

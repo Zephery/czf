@@ -105,6 +105,8 @@
     <bean id="userAction" class="com.action.UserAction">
         <property name="userService" ref="userService"/>
         <property name="orderService" ref="orderService"/>
+        <property name="orderitemService" ref="orderitemService"/>
+        <property name="productService" ref="productService"/>
     </bean>
     <!--#########购物车##########-->
     <bean id="orderDAO" class="com.dao.impl.OrderDAO" parent="baseDAO"/>
@@ -114,5 +116,10 @@
     <bean id="shopAction" class="com.action.ShopAction">
         <property name="productService" ref="productService"/>
         <property name="orderService" ref="orderService"/>
+    </bean>
+    <!-- orderitem-->
+    <bean id="orderitemDAO" class="com.dao.impl.OrderitemDAO" parent="baseDAO"/>
+    <bean id="orderitemService" class="com.service.impl.OrderitemService">
+        <property name="orderitemDAO" ref="orderitemDAO"/>
     </bean>
 </beans>
