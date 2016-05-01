@@ -16,7 +16,10 @@ public class ProductDAO extends BaseDAO implements IProductDAO {
         try {
             Session session = getSession();
             Transaction ts = session.beginTransaction();
-            return session.createQuery("from Product").list().size();
+            Query query=session.createQuery("from Product");
+            List list=query.list();
+            session.close();
+            return list.size();
         } catch (Exception e) {
             e.printStackTrace();
             return 0;

@@ -19,17 +19,7 @@
     <h1><s:property value="#user.sex"/></h1>
     <img src="images/<s:property value="#user.picture"/>" style="height: 50px;width: 50px;"/>
 </s:iterator>
-<s:iterator value="#session['orders']" id="order">
-    <h1>allprice:<s:property value="#order.allprice"/></h1>
-    <h1><s:property value="#order.orderitem.quantity"/></h1>
-</s:iterator>
-<s:iterator value="#session['orderitems']" id="orderitem">
-    <h1>orderitemid:<s:property value="#orderitem.orderitemid"/></h1>
-    <h1>quantity:<s:property value="#orderitem.quantity"/></h1>
-</s:iterator>
-
-<s:iterator value="#session['soldproduct']" id="soldproduct">
-    <h1>productname<s:property value="#soldproduct.name"/></h1>
-    <img src="images/<s:property value="#soldproduct.picture"/>"/>
-</s:iterator>
+<s:action name="getorderhistory" namespace="/" executeResult="true">
+    <s:param name="user.userid" value="#session.user.userid"/>
+</s:action>
 <jsp:include page="foot.jsp"/>

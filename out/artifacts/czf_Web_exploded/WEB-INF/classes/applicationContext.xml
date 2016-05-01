@@ -94,6 +94,8 @@
         <property name="productService" ref="productService"/>
         <property name="catalogService" ref="catalogService"/>
         <property name="totalCatalogService" ref="totalCatalogService"/>
+        <property name="orderService" ref="orderService"/>
+        <property name="orderitemService" ref="orderitemService"/>
     </bean>
     <bean id="productDAO" class="com.dao.impl.ProductDAO" parent="baseDAO"/>
 

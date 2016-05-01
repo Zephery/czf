@@ -4,17 +4,13 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.models.Catalog;
-import com.models.Product;
-import com.models.Totalcatalog;
+import com.models.*;
 import com.opensymphony.xwork2.*;
 import com.tool.Pager;
 import com.service.*;
-import org.apache.commons.httpclient.Cookie;
 import org.apache.struts2.ServletActionContext;
 import org.apache.commons.io.FileUtils;
 
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Zephery on 2016/4/23.
@@ -30,6 +26,69 @@ public class ProductAction extends ActionSupport {
     private IProductService productService;
     private ICatalogService catalogService;
     private String name;
+    private IOrderService orderService;
+    private IOrderitemService orderitemService;
+    private Users user;
+    private Integer totalcatalogid;
+
+
+    private Catalog catalog;
+
+    public Catalog getCatalog() {
+        return catalog;
+    }
+
+    public void setCatalog(Catalog catalog) {
+        this.catalog = catalog;
+    }
+
+    private Integer catalogid;
+
+    public Integer getCatalogid() {
+        return catalogid;
+    }
+
+    public void setCatalogid(Integer catalogid) {
+        this.catalogid = catalogid;
+    }
+
+
+    public Integer getTotalcatalogid() {
+        return totalcatalogid;
+    }
+
+    public void setTotalcatalogid(Integer totalcatalogid) {
+        this.totalcatalogid = totalcatalogid;
+    }
+
+
+    private Totalcatalog totalcatalog;
+
+    public Totalcatalog getTotalcatalog() {
+        return totalcatalog;
+    }
+
+    public void setTotalcatalog(Totalcatalog totalcatalog) {
+        this.totalcatalog = totalcatalog;
+    }
+
+    private ITotalCatalogService totalCatalogService;
+
+    public ITotalCatalogService getTotalCatalogService() {
+        return totalCatalogService;
+    }
+
+    public void setTotalCatalogService(ITotalCatalogService totalCatalogService) {
+        this.totalCatalogService = totalCatalogService;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
 
     public int getPageNow() {
         return pageNow;
@@ -102,6 +161,23 @@ public class ProductAction extends ActionSupport {
 
     public void setCatalogService(ICatalogService catalogService) {
         this.catalogService = catalogService;
+    }
+
+
+    public IOrderService getOrderService() {
+        return orderService;
+    }
+
+    public void setOrderService(IOrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    public IOrderitemService orderitemService() {
+        return orderitemService;
+    }
+
+    public void setOrderitemService(IOrderitemService orderitemService) {
+        this.orderitemService = orderitemService;
     }
 
     public String findAllProduct() throws Exception {      // find the number of all products
@@ -218,27 +294,6 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
-
-    private Catalog catalog;
-
-    public Catalog getCatalog() {
-        return catalog;
-    }
-
-    public void setCatalog(Catalog catalog) {
-        this.catalog = catalog;
-    }
-
-    private Integer catalogid;
-
-    public Integer getCatalogid() {
-        return catalogid;
-    }
-
-    public void setCatalogid(Integer catalogid) {
-        this.catalogid = catalogid;
-    }
-
     public String catalogProductdetail() throws Exception {
         int totalSize = productService.findAllCatalogProduct(catalog.getCatalogid());
         Pager pager = new Pager(getPageNow(), totalSize);
@@ -254,25 +309,6 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
-    private Totalcatalog totalcatalog;
-
-    public Totalcatalog getTotalcatalog() {
-        return totalcatalog;
-    }
-
-    public void setTotalcatalog(Totalcatalog totalcatalog) {
-        this.totalcatalog = totalcatalog;
-    }
-
-    private ITotalCatalogService totalCatalogService;
-
-    public ITotalCatalogService getTotalCatalogService() {
-        return totalCatalogService;
-    }
-
-    public void setTotalCatalogService(ITotalCatalogService totalCatalogService) {
-        this.totalCatalogService = totalCatalogService;
-    }
 
     public String tomenu() throws Exception {
         List totalcatalogs = totalCatalogService.getTotalcatalog();
@@ -281,15 +317,6 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
-    private Integer totalcatalogid;
-
-    public Integer getTotalcatalogid() {
-        return totalcatalogid;
-    }
-
-    public void setTotalcatalogid(Integer totalcatalogid) {
-        this.totalcatalogid = totalcatalogid;
-    }
 
     public String tomenulist() throws Exception {
         int totalcatalogid0 = getTotalcatalogid();
@@ -303,6 +330,24 @@ public class ProductAction extends ActionSupport {
         List products = productService.getproductbydatetime();
         Map request = (Map) ActionContext.getContext().get("request");
         request.put("products", products);
+        return SUCCESS;
+    }
+
+    public String getorderhistory() throws Exception {
+        int id00=user.getUserid();
+        List<Orders> orders = orderService.getorderhistory(id00);
+        List<Orderitem> orderitems = new ArrayList<>();
+        for (Orders order : orders) {
+            orderitems.add(orderitemService.getorderitemhistory(order.getOrderid()));
+        }
+        List<Product> soldproducts = new ArrayList<>();
+        for (Orderitem orderitem : orderitems) {
+            soldproducts.add(productService.findProduct(orderitem.getProduct().getProductid()));
+        }
+        Map request = (Map) ActionContext.getContext().get("request");
+        request.put("orders",orders);
+        request.put("orderitems",orderitems);
+        request.put("soldproducts",soldproducts);
         return SUCCESS;
     }
 }

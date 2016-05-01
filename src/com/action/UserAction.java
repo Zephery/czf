@@ -114,19 +114,6 @@ public class UserAction extends ActionSupport {
         //System.out.println("hello world");
         if (u != null) {
             Map session = ActionContext.getContext().getSession();
-            List<Orders> orders = orderService.getorderhistory(u.getUserid());
-            List<Orderitem> orderitems = new ArrayList<>();
-            for (Orders order : orders) {
-                orderitems.add(orderitemService.getorderitemhistory(order.getOrderid()));
-            }
-            List<Product> soldproduct = new ArrayList<>();
-
-            for (Orderitem orderitem : orderitems) {
-                soldproduct.add(productService.findProduct(orderitem.getProduct().getProductid()));
-            }
-            session.put("soldproduct", soldproduct);
-            session.put("orderitems", orderitems);
-            session.put("orders", orders);
             session.put("user", u);
             return SUCCESS;
         } else {

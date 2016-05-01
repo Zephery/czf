@@ -49,5 +49,8 @@
         <action name="getproductbydatetime" class="productAction" method="getproductbydatetime">
             <result name="success">/getproductbydatetime.jsp</result>
         </action>
+        <action name="getorderhistory" class="productAction" method="getorderhistory">
+            <result name="success">/getorderhistory.jsp</result>
+        </action>
     </package>
 </struts>    
