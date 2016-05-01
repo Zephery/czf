@@ -124,4 +124,12 @@
     <bean id="orderitemService" class="com.service.impl.OrderitemService">
         <property name="orderitemDAO" ref="orderitemDAO"/>
     </bean>
+    <!--Admin-->
+    <bean id="adminDAO" class="com.dao.impl.AdminDAO" parent="baseDAO"/>
+    <bean id="adminService" class="com.service.impl.AdminService">
+        <property name="adminDAO" ref="adminDAO"/>
+    </bean>
+    <bean id="adminAction" class="com.action.AdminAction">
+        <property name="adminService" ref="adminService"/>
+    </bean>
 </beans>

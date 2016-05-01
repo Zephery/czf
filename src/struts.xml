@@ -53,4 +53,13 @@
             <result name="success">/getorderhistory.jsp</result>
         </action>
     </package>
+    <package name="admin" namespace="/admin" extends="struts-default">
+        <action name="adminlogin" class="adminAction" method="adminlogin">
+            <result name="success">/admin/main.jsp</result>
+            <result name="error">/admin/index.jsp</result>
+        </action>
+        <action name="adminlogout" class="adminAction" method="adminlogout">
+            <result name="success">/admin/index.jsp</result>
+        </action>
+    </package>
 </struts>    
