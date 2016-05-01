@@ -19,7 +19,7 @@
     <tr>
         <td><a href="newProduct" target="right">Product</a></td>
     <tr>
-        <td><a href="register.jsp" target="right">点我添加管理人员</a></td>
+        <td><a href="addadmin.jsp" target="right">点我添加管理人员</a></td>
     </tr>
     <tr>
         <td><a href="addProduct.jsp" target="right">Add product</a></td>

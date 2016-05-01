@@ -209,6 +209,9 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String toaddProduct() throws Exception {
+        return SUCCESS;
+    }
 
     public String addProduct() throws Exception {
         Product product0 = new Product();
@@ -334,7 +337,7 @@ public class ProductAction extends ActionSupport {
     }
 
     public String getorderhistory() throws Exception {
-        int id00=user.getUserid();
+        int id00 = user.getUserid();
         List<Orders> orders = orderService.getorderhistory(id00);
         List<Orderitem> orderitems = new ArrayList<>();
         for (Orders order : orders) {
@@ -345,9 +348,9 @@ public class ProductAction extends ActionSupport {
             soldproducts.add(productService.findProduct(orderitem.getProduct().getProductid()));
         }
         Map request = (Map) ActionContext.getContext().get("request");
-        request.put("orders",orders);
-        request.put("orderitems",orderitems);
-        request.put("soldproducts",soldproducts);
+        request.put("orders", orders);
+        request.put("orderitems", orderitems);
+        request.put("soldproducts", soldproducts);
         return SUCCESS;
     }
 }

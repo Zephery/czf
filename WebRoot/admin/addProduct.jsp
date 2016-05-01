@@ -12,11 +12,12 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="head.jsp"/>
 <form action="addProduct" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>
-                <s:textfield name="product.id" label="Id"/>
+                <s:textfield name="product.productid" label="Id"/>
             </td>
         </tr>
         <tr>
@@ -36,12 +37,6 @@
         </tr>
         <tr>
             <td>
-                <s:textfield name="product.category" label="Category"/>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
                 <s:textfield name="product.standard" label="Standard"/>
             </td>
         </tr>
@@ -52,27 +47,33 @@
         </tr>
         <tr>
             <td>
-                Price:<input type="text" name="product.price"/>
+                <s:textfield name="product.brief" label="brief"/>
             </td>
         </tr>
         <tr>
             <td>
-                Brief:<input type="text" name="product.brief"/>
+                <s:textfield name="product.price" label="price"/>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <s:textfield name="product.content" label="content"/>
             </td>
         </tr>
         <tr>
             <td>
-                Declaration:<input type="text" name="product.declaration"/>
+                <s:textfield name="product.summary" label="summary"/>
             </td>
         </tr>
         <tr>
             <td>
-                Remark:<input type="text" name="product.remark"/>
+                <s:file name="zpFile" label="picture"/>
             </td>
         </tr>
         <tr>
             <td>
-                Picture:<s:file name="zpFile" label="picture"/>
+                <s:textfield name="catalogid" label="catalogid"/>
             </td>
         </tr>
         <tr>

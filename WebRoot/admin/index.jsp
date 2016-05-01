@@ -16,7 +16,6 @@
     -->
 </head>
 <body>
-<jsp:include page="head.jsp"/>
 <form action="adminlogin" method="post">
     用户登录
     <br>

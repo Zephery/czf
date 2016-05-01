@@ -10,7 +10,7 @@
 <html>
 <head><title>在框架中显示网页</title></head>
 <body>
-
+<jsp:include page="head.jsp"/>
 </body>
 </html>
 

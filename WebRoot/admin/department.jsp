@@ -7,10 +7,13 @@
 --%>
 <%@ page language="java" import="java.util.*" pageEncoding="GBK" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
+<html>
+<head>
+    <title>Title</title>
+</head>
+<body>
+<jsp:include page="head.jsp"/>
 <h1>≤ø√≈±Ì</h1>
-<s:action name="department" executeResult="true"/>
-
 <table>
     <tr>
         <th>id</th>
@@ -38,5 +41,5 @@
         </tr>
     </s:iterator>
 </table>
-
-
+</body>
+</html>

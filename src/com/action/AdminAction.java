@@ -64,4 +64,8 @@ public class AdminAction extends ActionSupport {
         session.remove("admin");
         return SUCCESS;
     }
+
+    public String toaddadmin() throws Exception {
+        return SUCCESS;
+    }
 }

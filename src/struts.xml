@@ -53,6 +53,9 @@
             <result name="success">/getorderhistory.jsp</result>
         </action>
     </package>
+
+
+    <!-- admin-->
     <package name="admin" namespace="/admin" extends="struts-default">
         <action name="adminlogin" class="adminAction" method="adminlogin">
             <result name="success">/admin/main.jsp</result>
@@ -60,6 +63,18 @@
         </action>
         <action name="adminlogout" class="adminAction" method="adminlogout">
             <result name="success">/admin/index.jsp</result>
+        </action>
+        <action name="toaddProduct" class="productAction" method="toaddProduct">
+            <result name="success">/admin/addProduct.jsp</result>
+        </action>
+        <action name="addProduct" class="productAction" method="addProduct">
+            <result name="success">/admin/success.jsp</result>
+        </action>
+        <action name="toaddAdmin" class="adminAction" method="toaddadmin">
+            <result name="success">/admin/addadmin.jsp</result>
+        </action>
+        <action name="todepartment" class="departmentAction" method="todepartment">
+            <result name="success">/admin/department.jsp</result>
         </action>
     </package>
 </struts>    

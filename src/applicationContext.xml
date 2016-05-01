@@ -132,4 +132,12 @@
     <bean id="adminAction" class="com.action.AdminAction">
         <property name="adminService" ref="adminService"/>
     </bean>
+    <!--department-->
+    <bean id="departmentDAO" class="com.dao.impl.DepartmentDAO" parent="baseDAO"/>
+    <bean id="departmentService" class="com.service.impl.DepartmentService">
+        <property name="departmentDAO" ref="departmentDAO"/>
+    </bean>
+    <bean id="departmentAction" class="com.action.DepartmentAction">
+        <property name="departmentService" ref="departmentService"/>
+    </bean>
 </beans>

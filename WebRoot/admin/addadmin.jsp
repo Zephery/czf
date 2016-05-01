@@ -11,22 +11,20 @@
     <title>Title</title>
 </head>
 <body>
-<form action="register" method="post">
+<jsp:include page="head.jsp"/>
+<h1>to add an admin</h1>
+<form action="addadmin" method="post" enctype="multipart/form-data">
     <table>
         <tr>
-            <td>用户注册</td>
+            <td>Add Admin</td>
         </tr>
         <tr>
             <td>用户名：</td>
-            <td><input type="text" id="name" name="username" size=20/></td>
+            <td><input type="text" id="name" name="admin.adminname" size=20/></td>
         </tr>
         <tr>
             <td>密&nbsp;码：</td>
-            <td><input type="password" name="password1" size=21/></td>
-        </tr>
-        <tr>
-            <td>Password Again：</td>
-            <td><input type="password" name="password2" size=21/></td>
+            <td><input type="password" name="admin.password" size=20/></td>
         </tr>
         <tr>
             <td><input type="submit" value="注册"/></td>

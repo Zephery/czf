@@ -14,7 +14,7 @@
 <body>
 <h1>Hello world</h1>
 <a href="department.action?">点击这里进入部门</a>
-<a href="register.jsp">点我添加管理</a>
+<a href="addadmin.jsp">点我添加管理</a>
 <form action="searchProduct" method="post">
     <table>
         <tr>
