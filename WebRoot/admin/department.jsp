@@ -5,7 +5,7 @@
   Time: 15:07
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" import="java.util.*" pageEncoding="GBK" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
@@ -13,7 +13,7 @@
 </head>
 <body>
 <jsp:include page="head.jsp"/>
-<h1>²¿ÃÅ±í</h1>
+<h1>éƒ¨é—¨è¡¨</h1>
 <table>
     <tr>
         <th>id</th>
@@ -35,9 +35,9 @@
                         value="#department.name"/></a></td>
             <td>
                 <a href="deleteDepartment.action?department.id=<s:property value="#department.id"/>"
-                   onClick="if(!confirm('È·¶¨É¾³ý¸ÃproductÂð£¿'))return false;else return true;">É¾³ý</a></td>
+                   onClick="if(!confirm('ç¡®å®šåˆ é™¤è¯¥productå—ï¼Ÿ'))return false;else return true;">åˆ é™¤</a></td>
             <td>
-                <a href="ToUpdateDepView.action?department.id=<s:property value="#department.id"/>">ÐÞ¸Ä</a></td>
+                <a href="ToUpdateDepView.action?department.id=<s:property value="#department.id"/>">ä¿®æ”¹</a></td>
         </tr>
     </s:iterator>
 </table>

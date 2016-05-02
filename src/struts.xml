@@ -64,6 +64,9 @@
         <action name="adminlogout" class="adminAction" method="adminlogout">
             <result name="success">/admin/index.jsp</result>
         </action>
+        <action name="toProduct" class="productAction" method="toProduct">
+            <result name="success">/admin/product.jsp</result>
+        </action>
         <action name="toaddProduct" class="productAction" method="toaddProduct">
             <result name="success">/admin/addProduct.jsp</result>
         </action>
@@ -73,8 +76,20 @@
         <action name="toaddAdmin" class="adminAction" method="toaddadmin">
             <result name="success">/admin/addadmin.jsp</result>
         </action>
+        <action name="addadmin" class="adminAction" method="addadmin">
+            <result name="success">/admin/success.jsp</result>
+        </action>
         <action name="todepartment" class="departmentAction" method="todepartment">
             <result name="success">/admin/department.jsp</result>
+        </action>
+        <action name="showproduct" class="productAction" method="showProduct">
+            <result name="success">/admin/product.jsp</result>
+        </action>
+        <action name="productdetail" class="productAction" method="productdetail">
+            <result name="success">/admin/productdetail.jsp</result>
+        </action>
+        <action name="searchProduct" class="productAction" method="searchProduct">
+            <result name="success">/admin/product.jsp</result>
         </action>
     </package>
 </struts>    

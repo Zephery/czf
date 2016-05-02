@@ -11,5 +11,5 @@
     </a>
 </s:else>
 <a href="todepartment">department</a>
-<a href="toaddProduct">addProduct</a>
+<a href="toProduct">Product</a>
 <a href="toaddAdmin">addAdmin</a>

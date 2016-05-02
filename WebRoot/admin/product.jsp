@@ -1,7 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GBK" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-
-<form action="searchProduct" method="post">
+<jsp:include page="head.jsp"/>
+<form action="searchProduct" method="post" enctype="multipart/form-data">
     <table>
         <tr>
             <td>product:<input type="text" name="name"></td>
@@ -9,7 +9,7 @@
         </tr>
     </table>
 </form>
-
+<a href="toaddProduct">add Product</a>
 
 <table>
     <tr>
@@ -22,13 +22,14 @@
     <s:iterator value="#request['products']" id="product">
         <tr>
             <td>
-                <img height="105" width="80" src="images/<s:property value="#product.picture"/>"/></td>
+                <img height="105" width="80" src="/images/<s:property value="#product.picture"/>"/></td>
             <td><h4><s:property value="#product.name"/></h4></td>
             <td><h4><s:property value="#product.brief"/></h4></td>
-            <td><a href="test?id=${product.id}"><b>${product.name}</b></a></td>
-            <td><a href="deleteProduct.action?product.id=${product.id}"
-                   onClick="if(!confirm('х╥╤╗и╬ЁЩ╦цproductбПё©'))return false;else return true;">и╬ЁЩ</a></td>
-            <td><a href="updateProduct.action?product.id=<s:property value="#product.id"/>">пч╦д</a></td>
+            <td><a href="productdetail?id=<s:property value="#product.productid"/>"><b><s:property
+                    value="#product.name"/></b></a></td>
+            <td><a href="deleteProduct.action?product.id=<s:property value="#product.productid"/>"
+                   onClick="if(!confirm('Г║╝Е╝ Е┬═И≥╓Х╞╔productЕ░≈О╪÷'))return false;else return true;">Е┬═И≥╓</a></td>
+            <td><a href="updateProduct.action?product.id=<s:property value="#product.productid"/>">Д©╝Ф■╧</a></td>
         </tr>
     </s:iterator>
 </table>
@@ -36,25 +37,26 @@
 
 <s:set name="pager" value="#request.pager"/>
 <s:if test="#pager.hasFirst">
-    <s:a href="newProduct.action?pageNow=1">йврЁ</s:a>
+    <s:a href="showproduct.action?pageNow=1">И╕√И║╣</s:a>
 </s:if>
 <s:if test="#pager.hasPre">
-    <a href="newProduct.action?pageNow=<s:property value="#pager.pageNow-1"/>">иор╩рЁ</a>
+    <a href="showproduct.action?pageNow=<s:property value="#pager.pageNow-1"/>">Д╦┼Д╦─И║╣</a>
 </s:if>
 <s:if test="#pager.hasNext">
-    <a href="newProduct.action?pageNow=<s:property value="#pager.pageNow+1"/>">обр╩рЁ</a>
+    <a href="showproduct.action?pageNow=<s:property value="#pager.pageNow+1"/>">Д╦▀Д╦─И║╣</a>
 </s:if>
 <s:if test="#pager.hasLast">
-    <a href="newProduct.action?pageNow=<s:property value="#pager.totalPage"/>">н╡рЁ</a> <br>
+    <a href="showproduct.action?pageNow=<s:property value="#pager.totalPage"/>">Е╟╬И║╣</a> <br>
 
-    ╣╠г╟╣з<s:property value="#pager.pageNow"/>рЁ, вэ╧╡<s:property value="#pager.totalPage"/>рЁ
+    Е╫⌠Е┴█Г╛╛<s:property value="#pager.pageNow"/>И║╣, Ф─╩Е┘╠<s:property value="#pager.totalPage"/>И║╣
 </s:if>
 <s:if test="#pager.pageNow>1">
-    <a href="newProduct.action?pageNow=<s:property value="#pager.pageNow-1"/>"><s:property
+    <a href="showproduct.action?pageNow=<s:property value="#pager.pageNow-1"/>"><s:property
             value="#pager.pageNow-1"/></a>
 </s:if>
-<a href="newProduct.action?pageNow=<s:property value="#pager.pageNow"/>"><s:property value="#pager.pageNow"/></a>
+<a href="showproduct.action?pageNow=<s:property value="#pager.pageNow"/>"><s:property
+        value="#pager.pageNow"/></a>
 <s:if test="#pager.hasNext">
-    <a href="newProduct.action?pageNow=<s:property value="#pager.pageNow+1"/>"><s:property
+    <a href="showproduct.action?pageNow=<s:property value="#pager.pageNow+1"/>"><s:property
             value="#pager.pageNow+1"/></a>
 </s:if>

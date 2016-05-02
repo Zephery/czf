@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <html>
 <head>
     <title>Title</title>
@@ -17,6 +18,10 @@
     <table>
         <tr>
             <td>Add Admin</td>
+        </tr>
+        <tr>
+            <td>Adminid：</td>
+            <td><input type="text" name="admin.id" size=20/></td>
         </tr>
         <tr>
             <td>用户名：</td>

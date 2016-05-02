@@ -68,4 +68,13 @@ public class AdminAction extends ActionSupport {
     public String toaddadmin() throws Exception {
         return SUCCESS;
     }
+
+    public String addadmin() throws Exception {
+        Admin addadmin = new Admin();
+        addadmin.setId(admin.getId());
+        addadmin.setAdminname(admin.getAdminname());
+        addadmin.setPassword(admin.getPassword());
+        adminService.saveAdmin(addadmin);
+        return SUCCESS;
+    }
 }

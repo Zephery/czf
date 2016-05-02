@@ -209,9 +209,32 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
+    public String toProduct() throws Exception {
+        int totalSize = productService.findAllProduct();
+        Pager pager = new Pager(getPageNow(), totalSize);
+        if (totalSize % pageSize == 0) {
+            pager.setTotalPage(totalSize / pageSize);
+        } else {
+            pager.setTotalPage(totalSize / pageSize + 1);
+        }
+        List products = productService.showProduct(getPageNow(), pageSize);
+        Map request = (Map) ActionContext.getContext().get("request");
+        request.put("products", products);
+        request.put("pager", pager);
+        return SUCCESS;
+    }
+
     public String toaddProduct() throws Exception {
         return SUCCESS;
     }
+
+    public String productdetail() throws Exception {
+        Product product = productService.findProduct(id);
+        Map request = (Map) ActionContext.getContext().get("request");
+        request.put("product", product);
+        return SUCCESS;
+    }
+
 
     public String addProduct() throws Exception {
         Product product0 = new Product();
@@ -229,6 +252,8 @@ public class ProductAction extends ActionSupport {
         product0.setBrief(product.getBrief());
         product0.setPrice(product.getPrice());
         product0.setContent(product.getContent());
+        String productdatetime = new SimpleDateFormat("yyMMddHHmmss").format(new Date());
+        product0.setDatetime(productdatetime);
         try {
             String targetDirectory = ServletActionContext.getServletContext().getRealPath("/images");
             //rename and upload
@@ -278,7 +303,7 @@ public class ProductAction extends ActionSupport {
         return SUCCESS;
     }
 
-    public String searchProduct() throws Exception {
+    public String searchProduct() throws Exception {          //search prodcut
         List products = productService.searchbyname(this.getName());
         if (products != null) {
             Map request = (Map) ActionContext.getContext().get("request");
